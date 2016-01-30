@@ -1,0 +1,5 @@
+{:title  "Clean Blog"
+ :description "A Clean Blog Theme by Start Bootstrap"
+ :logo "Start Bootstrap"
+ :copyright "Copyright © Your Website 2016"
+ :article-count-per-page 5}

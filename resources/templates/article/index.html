@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block yield %}
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    {% for article in articles %}
+    <div class="post-preview">
+      <a href="/{{ article.id }}">
+        <h2 class="post-title">
+	  {{ article.title }}
+        </h2>
+        <h3 class="post-subtitle">
+	  {{ article.subtitle }}
+        </h3>
+      </a>
+      <p class="post-meta">Posted by <a href="#">{{ article.author }}</a> on {{ article.date }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    <!-- Pager -->
+    <ul class="pager">
+      {% if prev-page > 0 %}
+      <li class="previous">
+        <a href="/?page={{ prev-page }}">&larr; 이전 글</a>
+      </li>
+      {% endif %}
+
+      {% if next-page > 0 %}
+      <li class="next">
+        <a href="/?page={{ next-page }}">다음 글 &rarr;</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
