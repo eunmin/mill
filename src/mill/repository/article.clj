@@ -10,13 +10,13 @@
 (defn- id->filename [id]
   (str base-path "/" id ".md"))
 
-(defn find [id]
-  (let [article (markdown/parse (id->filename id))]
+(defn find [id & [{:keys [only-meta?]}]]
+  (let [article (markdown/parse (id->filename id) :only-meta? only-meta?)]
     (article/create (assoc (:metadata article)
                       :id id
                       :content (:html article)))))
 
 (defn find-all []
-  (mapv #(find (file/base-name %)) (file/ls-rt base-path)))
+  (mapv #(find (file/base-name %) {:only-meta? true}) (file/ls-rt base-path)))
 
 
